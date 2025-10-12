@@ -27,7 +27,7 @@ const WhyChooseUs = () => {
   return (
     <section className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-fade-in">
           <h2 className="section-title">Pourquoi Choisir PANAFRIQUE MOTORS</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Nous nous engageons à vous offrir une expérience d'achat automobile exceptionnelle
@@ -38,13 +38,14 @@ const WhyChooseUs = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-card p-6 rounded-lg border border-border/50 hover:border-accent/50 transition-all duration-300 hover:shadow-[0_0_30px_hsl(45,100%,55%,0.1)] group"
+              className="bg-card p-6 rounded-lg border border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-[0_0_40px_hsl(45,100%,55%,0.15)] group animate-fade-in hover:-translate-y-2"
+              style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'both' }}
             >
-              <div className="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                <feature.icon className="w-7 h-7 text-accent" />
+              <div className="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                <feature.icon className="w-7 h-7 text-accent group-hover:scale-110 transition-transform duration-500" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
+              <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">{feature.title}</h3>
+              <p className="text-muted-foreground transition-colors duration-300 group-hover:text-foreground">{feature.description}</p>
             </div>
           ))}
         </div>

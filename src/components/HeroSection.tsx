@@ -45,21 +45,21 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative h-full flex items-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl space-y-6 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          <div className="max-w-2xl space-y-6">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
               {slides[currentSlide].title}
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">
+            <p className="text-xl md:text-2xl text-muted-foreground animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
               {slides[currentSlide].subtitle}
             </p>
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-wrap gap-4 pt-4 animate-fade-in" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
               <Link to="/stock">
-                <Button size="lg" className="btn-gold">
+                <Button size="lg" className="btn-gold hover-scale">
                   DÉCOUVRIR NOS MODÈLES
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground hover-scale">
                   NOUS CONTACTER
                 </Button>
               </Link>
