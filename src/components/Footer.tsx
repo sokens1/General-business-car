@@ -37,11 +37,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/financing" className="text-muted-foreground hover:text-accent transition-colors text-sm">
-                  Financement
-                </Link>
-              </li>
-              <li>
                 <Link to="/about" className="text-muted-foreground hover:text-accent transition-colors text-sm">
                   À Propos
                 </Link>
@@ -56,7 +51,6 @@ const Footer = () => {
               <li>Vente de véhicules neufs</li>
               <li>Véhicules d'occasion</li>
               <li>Entretien et réparation</li>
-              <li>Solutions de financement</li>
             </ul>
           </div>
 
