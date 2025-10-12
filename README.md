@@ -1,73 +1,147 @@
-# Welcome to your Lovable project
+# 🚗 Panafrique Motors - Site Web
 
-## Project info
+## 📍 Localisation
 
-**URL**: https://lovable.dev/projects/7445ef3e-1a5f-4442-a1a4-5333b90aeeeb
+**Pays** : Gabon 🇬🇦  
+**Ville** : Libreville  
+**Secteur** : Vente de véhicules premium et services automobiles
 
-## How can I edit this code?
+## 🚀 Démarrage Rapide
 
-There are several ways of editing your application.
+### Prérequis
 
-**Use Lovable**
+- Node.js 16+ et npm installés
+- Un compte Supabase (gratuit) : [https://app.supabase.com](https://app.supabase.com)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7445ef3e-1a5f-4442-a1a4-5333b90aeeeb) and start prompting.
+### Installation
 
-Changes made via Lovable will be committed automatically to this repo.
+```bash
+# 1. Installer les dépendances
+npm install
 
-**Use your preferred IDE**
+# 2. Configurer Supabase (voir SUPABASE-INTEGRATION.md)
+# Créer un fichier .env avec vos clés Supabase
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 3. Démarrer le serveur de développement
 npm run dev
+
+# 4. Ouvrir http://localhost:5173 dans votre navigateur
 ```
 
-**Edit a file directly in GitHub**
+## 📚 Documentation
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Guides Principaux
+- **[SUPABASE-INTEGRATION.md](./SUPABASE-INTEGRATION.md)** - Guide complet d'intégration Supabase (étapes détaillées)
+- **[RECAP-MODIFICATIONS.md](./RECAP-MODIFICATIONS.md)** - Récapitulatif de toutes les modifications
+- **[supabase-schema.sql](./supabase-schema.sql)** - Schéma SQL à exécuter dans Supabase
 
-**Use GitHub Codespaces**
+### Galerie d'Images (NEW! 📸)
+- **[GALERIE-QUICK-START.md](./GALERIE-QUICK-START.md)** - Démarrage rapide galerie (3 min)
+- **[GALERIE-IMAGES-VEHICULES.md](./GALERIE-IMAGES-VEHICULES.md)** - Guide complet galerie
+- **[supabase-vehicle-images.sql](./supabase-vehicle-images.sql)** - Script SQL pour les images
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🛠️ Technologies Utilisées
 
-## What technologies are used for this project?
+### Frontend
+- **React 18** - Framework JavaScript
+- **TypeScript** - Typage statique
+- **Vite** - Build tool rapide
+- **Tailwind CSS** - Styling
+- **shadcn/ui** - Composants UI
+- **React Router** - Navigation
+- **Lucide React** - Icônes
 
-This project is built with:
+### Backend & Database
+- **Supabase** - Backend as a Service
+  - PostgreSQL - Base de données
+  - Authentication - Gestion des utilisateurs
+  - Storage - Stockage de fichiers
+  - Row Level Security - Sécurité
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### State Management
+- **TanStack Query (React Query)** - Gestion des requêtes et cache
 
-## How can I deploy this project?
+## ✨ Fonctionnalités
 
-Simply open [Lovable](https://lovable.dev/projects/7445ef3e-1a5f-4442-a1a4-5333b90aeeeb) and click on Share -> Publish.
+### 🏠 Page d'Accueil
+- Section hero avec slider
+- Véhicules en vedette (dynamiques depuis Supabase)
+- Offres spéciales
+- Section "Pourquoi nous choisir"
 
-## Can I connect a custom domain to my Lovable project?
+### 🚘 Stock de Véhicules
+- Liste complète des véhicules disponibles
+- Filtres par marque et type de carburant
+- Affichage avec images et détails
+- Page de détail pour chaque véhicule
+- **Galerie d'images interactive** avec navigation (NEW! 📸)
 
-Yes, you can!
+### 🛠️ Services
+- Liste des services offerts
+- Services chargés depuis Supabase
+- Icônes et descriptions
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### 📞 Contact
+- Formulaire de contact connecté à Supabase
+- Informations de contact (Gabon)
+- Carte interactive (à venir)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### ℹ️ À Propos
+- Histoire de l'entreprise
+- Valeurs et mission
+- Statistiques
+- Présentation de l'équipe
+
+## 📊 Structure du Projet
+
+```
+panafrique-drive-hub/
+├── src/
+│   ├── components/       # Composants réutilisables
+│   │   ├── ui/          # Composants UI (shadcn)
+│   │   ├── Navbar.tsx
+│   │   ├── Footer.tsx
+│   │   └── ...
+│   ├── pages/           # Pages de l'application
+│   │   ├── Index.tsx    # Page d'accueil
+│   │   ├── Stock.tsx    # Page véhicules
+│   │   ├── Contact.tsx  # Page contact
+│   │   └── ...
+│   ├── hooks/           # Hooks personnalisés
+│   │   ├── useVehicles.ts
+│   │   ├── useServices.ts
+│   │   └── ...
+│   ├── lib/             # Utilitaires
+│   │   └── supabase.ts  # Client Supabase
+│   └── assets/          # Images et ressources
+├── public/              # Fichiers statiques
+│   └── favicon.svg      # Favicon personnalisé
+├── supabase-schema.sql  # Schéma de base de données
+├── SUPABASE-INTEGRATION.md  # Guide d'intégration
+└── RECAP-MODIFICATIONS.md   # Récapitulatif
+```
+
+## 🚀 Déploiement
+
+### Variables d'Environnement
+
+Assurez-vous de configurer ces variables sur votre plateforme de déploiement :
+
+```env
+VITE_SUPABASE_URL=https://votre-project-id.supabase.co
+VITE_SUPABASE_ANON_KEY=votre-anon-key
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+Le dossier `dist/` contiendra les fichiers prêts pour la production.
+
+### Plateformes Recommandées
+
+- **Vercel** - Déploiement facile pour Vite/React
+- **Netlify** - Alternative avec CI/CD
+- **Cloudflare Pages** - Performance optimale

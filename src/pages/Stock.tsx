@@ -1,84 +1,74 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import VehicleCard from "@/components/VehicleCard";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import vehicle1 from "@/assets/vehicle-1.jpg";
-import vehicle2 from "@/assets/vehicle-2.jpg";
-import vehicle3 from "@/assets/vehicle-3.jpg";
-import vehicle4 from "@/assets/vehicle-4.jpg";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Search } from "lucide-react";
+import { useVehicles } from "@/hooks/useVehicles";
 
 const Stock = () => {
-  const [filters, setFilters] = useState({
-    make: [] as string[],
-    priceRange: [] as string[],
-    fuelType: [] as string[],
-  });
+  const { data: allVehicles, isLoading } = useVehicles();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedMake, setSelectedMake] = useState<string>("all");
+  const [selectedFuelType, setSelectedFuelType] = useState<string>("all");
+  const [sortBy, setSortBy] = useState<string>("recent");
 
-  const vehicles = [
-    {
-      id: "1",
-      name: "BMW X7 M50i",
-      price: "À partir de 95 000 €",
-      image: vehicle1,
-      year: "2024",
-      mileage: "0 km",
-      fuel: "Essence",
-      make: "BMW",
-    },
-    {
-      id: "2",
-      name: "Lexus LX 600",
-      price: "À partir de 110 000 €",
-      image: vehicle2,
-      year: "2024",
-      mileage: "0 km",
-      fuel: "Essence",
-      make: "Lexus",
-    },
-    {
-      id: "3",
-      name: "Ford F-150 Raptor",
-      price: "À partir de 75 000 €",
-      image: vehicle3,
-      year: "2024",
-      mileage: "0 km",
-      fuel: "Essence",
-      make: "Ford",
-    },
-    {
-      id: "4",
-      name: "Hyundai Ioniq 6",
-      price: "À partir de 55 000 €",
-      image: vehicle4,
-      year: "2024",
-      mileage: "0 km",
-      fuel: "Électrique",
-      make: "Hyundai",
-    },
-    {
-      id: "5",
-      name: "BMW X5 xDrive45e",
-      price: "À partir de 85 000 €",
-      image: vehicle1,
-      year: "2024",
-      mileage: "5 000 km",
-      fuel: "Hybride",
-      make: "BMW",
-    },
-    {
-      id: "6",
-      name: "Lexus RX 500h",
-      price: "À partir de 72 000 €",
-      image: vehicle2,
-      year: "2023",
-      mileage: "12 000 km",
-      fuel: "Hybride",
-      make: "Lexus",
-    },
-  ];
+  // Obtenir les marques uniques des véhicules
+  const uniqueMakes = useMemo(() => {
+    if (!allVehicles) return [];
+    return Array.from(new Set(allVehicles.map(v => v.make))).sort();
+  }, [allVehicles]);
+
+  // Obtenir les types de carburant uniques
+  const uniqueFuelTypes = useMemo(() => {
+    if (!allVehicles) return [];
+    return Array.from(new Set(allVehicles.map(v => v.fuel_type))).sort();
+  }, [allVehicles]);
+
+  // Filtrer et trier les véhicules
+  const filteredVehicles = useMemo(() => {
+    if (!allVehicles) return [];
+    
+    let filtered = allVehicles.filter(vehicle => {
+      // Filtre par recherche
+      if (searchQuery) {
+        const query = searchQuery.toLowerCase();
+        const matchName = vehicle.name.toLowerCase().includes(query);
+        const matchMake = vehicle.make.toLowerCase().includes(query);
+        const matchModel = vehicle.model.toLowerCase().includes(query);
+        if (!matchName && !matchMake && !matchModel) return false;
+      }
+      
+      // Filtre par marque
+      if (selectedMake !== "all" && vehicle.make !== selectedMake) return false;
+      
+      // Filtre par carburant
+      if (selectedFuelType !== "all" && vehicle.fuel_type !== selectedFuelType) return false;
+      
+      return true;
+    });
+
+    // Tri
+    switch (sortBy) {
+      case "price-asc":
+        filtered.sort((a, b) => a.price - b.price);
+        break;
+      case "price-desc":
+        filtered.sort((a, b) => b.price - a.price);
+        break;
+      case "name":
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "year":
+        filtered.sort((a, b) => b.year - a.year);
+        break;
+      default: // recent
+        filtered.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+    }
+
+    return filtered;
+  }, [allVehicles, searchQuery, selectedMake, selectedFuelType, sortBy]);
 
   return (
     <div className="min-h-screen">
@@ -87,77 +77,107 @@ const Stock = () => {
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           {/* Page Header */}
-          <div className="mb-12">
+          <div className="mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Explorez Notre Stock</h1>
             <p className="text-xl text-muted-foreground">
-              {vehicles.length} véhicules disponibles
+              {isLoading ? "Chargement..." : `${filteredVehicles.length} véhicules disponibles`}
             </p>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Filters Sidebar */}
-            <aside className="lg:w-64 space-y-6">
-              <div className="bg-card p-6 rounded-lg border border-border">
-                <h2 className="text-lg font-bold mb-4">FILTRES</h2>
-                
-                {/* Make Filter */}
-                <div className="space-y-3">
-                  <h3 className="font-semibold text-sm uppercase">Marque</h3>
-                  {["BMW", "Lexus", "Ford", "Hyundai"].map((make) => (
-                    <div key={make} className="flex items-center space-x-2">
-                      <Checkbox id={`make-${make}`} />
-                      <Label htmlFor={`make-${make}`} className="text-sm cursor-pointer">
-                        {make}
-                      </Label>
-                    </div>
-                  ))}
-                </div>
-
-                <Separator className="my-4" />
-
-                {/* Price Range Filter */}
-                <div className="space-y-3">
-                  <h3 className="font-semibold text-sm uppercase">Prix</h3>
-                  {[
-                    "< 50 000 €",
-                    "50 000 € - 75 000 €",
-                    "75 000 € - 100 000 €",
-                    "> 100 000 €",
-                  ].map((range) => (
-                    <div key={range} className="flex items-center space-x-2">
-                      <Checkbox id={`price-${range}`} />
-                      <Label htmlFor={`price-${range}`} className="text-sm cursor-pointer">
-                        {range}
-                      </Label>
-                    </div>
-                  ))}
-                </div>
-
-                <Separator className="my-4" />
-
-                {/* Fuel Type Filter */}
-                <div className="space-y-3">
-                  <h3 className="font-semibold text-sm uppercase">Carburant</h3>
-                  {["Essence", "Diesel", "Électrique", "Hybride"].map((fuel) => (
-                    <div key={fuel} className="flex items-center space-x-2">
-                      <Checkbox id={`fuel-${fuel}`} />
-                      <Label htmlFor={`fuel-${fuel}`} className="text-sm cursor-pointer">
-                        {fuel}
-                      </Label>
-                    </div>
-                  ))}
-                </div>
+          {/* Barre de recherche et filtres */}
+          <div className="mb-8 space-y-4">
+            <div className="flex flex-col md:flex-row gap-4">
+              {/* Barre de recherche */}
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <Input
+                  type="text"
+                  placeholder="Rechercher un véhicule (marque, modèle...)"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 h-12"
+                />
               </div>
-            </aside>
 
-            {/* Vehicle Grid */}
-            <div className="flex-1">
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {vehicles.map((vehicle) => (
-                  <VehicleCard key={vehicle.id} {...vehicle} />
-                ))}
+              {/* Filtres compacts */}
+              <div className="flex flex-wrap gap-3">
+                {/* Filtre Marque */}
+                <Select value={selectedMake} onValueChange={setSelectedMake}>
+                  <SelectTrigger className="w-[160px] h-12">
+                    <SelectValue placeholder="Marque" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Toutes marques</SelectItem>
+                    {uniqueMakes.map((make) => (
+                      <SelectItem key={make} value={make}>
+                        {make}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                {/* Filtre Carburant */}
+                <Select value={selectedFuelType} onValueChange={setSelectedFuelType}>
+                  <SelectTrigger className="w-[160px] h-12">
+                    <SelectValue placeholder="Carburant" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Tous types</SelectItem>
+                    {uniqueFuelTypes.map((fuel) => (
+                      <SelectItem key={fuel} value={fuel}>
+                        {fuel}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                {/* Tri */}
+                <Select value={sortBy} onValueChange={setSortBy}>
+                  <SelectTrigger className="w-[160px] h-12">
+                    <SelectValue placeholder="Trier par" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="recent">Plus récents</SelectItem>
+                    <SelectItem value="price-asc">Prix croissant</SelectItem>
+                    <SelectItem value="price-desc">Prix décroissant</SelectItem>
+                    <SelectItem value="name">Nom (A-Z)</SelectItem>
+                    <SelectItem value="year">Année</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
+          </div>
+
+          {/* Vehicle Grid */}
+          <div>
+            {isLoading ? (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">Chargement des véhicules...</p>
+              </div>
+            ) : filteredVehicles.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {filteredVehicles.map((vehicle) => (
+                  <VehicleCard 
+                    key={vehicle.id}
+                    id={vehicle.id}
+                    name={vehicle.name}
+                    price={`À partir de ${vehicle.price.toLocaleString()} ${vehicle.currency}`}
+                    image={vehicle.image_url}
+                    year={vehicle.year.toString()}
+                    mileage={`${vehicle.mileage.toLocaleString()} km`}
+                    fuel={vehicle.fuel_type}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">
+                  {searchQuery || selectedMake !== "all" || selectedFuelType !== "all" 
+                    ? "Aucun véhicule ne correspond à vos critères de recherche." 
+                    : "Aucun véhicule disponible pour le moment."}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </main>

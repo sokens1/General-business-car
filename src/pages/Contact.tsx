@@ -6,11 +6,41 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { toast } from "sonner";
+import { useContactRequest } from "@/hooks/useContactRequest";
+import { useState } from "react";
 
 const Contact = () => {
+  const { mutate: sendContact, isPending } = useContactRequest();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message envoyé avec succès! Nous vous répondrons rapidement.");
+    
+    sendContact({
+      ...formData,
+      request_type: "contact",
+    }, {
+      onSuccess: () => {
+        toast.success("Message envoyé avec succès! Nous vous répondrons rapidement.");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      },
+      onError: (error) => {
+        toast.error("Erreur lors de l'envoi du message. Veuillez réessayer.");
+        console.error(error);
+      },
+    });
   };
 
   return (
@@ -39,6 +69,8 @@ const Contact = () => {
                     type="text"
                     placeholder="Votre nom"
                     required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="mt-2"
                   />
                 </div>
@@ -49,6 +81,8 @@ const Contact = () => {
                     type="email"
                     placeholder="votre@email.com"
                     required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="mt-2"
                   />
                 </div>
@@ -57,7 +91,9 @@ const Contact = () => {
                   <Input
                     id="phone"
                     type="tel"
-                    placeholder="+242 XX XXX XXXX"
+                    placeholder="+241 XX XXX XXXX"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="mt-2"
                   />
                 </div>
@@ -68,6 +104,8 @@ const Contact = () => {
                     type="text"
                     placeholder="Objet de votre message"
                     required
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     className="mt-2"
                   />
                 </div>
@@ -78,11 +116,13 @@ const Contact = () => {
                     placeholder="Décrivez votre demande..."
                     rows={5}
                     required
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="mt-2"
                   />
                 </div>
-                <Button type="submit" className="w-full btn-gold">
-                  ENVOYER LE MESSAGE
+                <Button type="submit" className="w-full btn-gold" disabled={isPending}>
+                  {isPending ? "ENVOI EN COURS..." : "ENVOYER LE MESSAGE"}
                 </Button>
               </form>
             </div>
@@ -98,8 +138,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Téléphone</h3>
-                      <p className="text-muted-foreground">+242 XX XXX XXXX</p>
-                      <p className="text-muted-foreground">+242 XX XXX XXXX</p>
+                      <p className="text-muted-foreground">+241 XX XXX XXXX</p>
+                      <p className="text-muted-foreground">+241 XX XXX XXXX</p>
                     </div>
                   </div>
 
@@ -121,8 +161,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold mb-1">Adresse</h3>
                       <p className="text-muted-foreground">
-                        Avenue de l'Indépendance<br />
-                        Brazzaville, Congo
+                        Boulevard Triomphal Omar Bongo<br />
+                        Libreville, Gabon
                       </p>
                     </div>
                   </div>

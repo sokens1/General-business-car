@@ -1,4 +1,4 @@
-import { Award, Shield, Wrench, DollarSign } from "lucide-react";
+import { Award, Shield, Wrench, Truck } from "lucide-react";
 
 const WhyChooseUs = () => {
   const features = [
@@ -18,9 +18,9 @@ const WhyChooseUs = () => {
       description: "Entretien et réparation par des techniciens qualifiés",
     },
     {
-      icon: DollarSign,
-      title: "Financement Flexible",
-      description: "Solutions de financement adaptées à votre budget",
+      icon: Truck,
+      title: "Livraison & Assistance",
+      description: "Livraison à domicile et assistance 24/7 partout au Gabon",
     },
   ];
 

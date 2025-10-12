@@ -5,50 +5,10 @@ import VehicleCard from "@/components/VehicleCard";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import vehicle1 from "@/assets/vehicle-1.jpg";
-import vehicle2 from "@/assets/vehicle-2.jpg";
-import vehicle3 from "@/assets/vehicle-3.jpg";
-import vehicle4 from "@/assets/vehicle-4.jpg";
+import { useFeaturedVehicles } from "@/hooks/useVehicles";
 
 const Index = () => {
-  const featuredVehicles = [
-    {
-      id: "1",
-      name: "BMW X7 M50i",
-      price: "À partir de 95 000 €",
-      image: vehicle1,
-      year: "2024",
-      mileage: "0 km",
-      fuel: "Essence",
-    },
-    {
-      id: "2",
-      name: "Lexus LX 600",
-      price: "À partir de 110 000 €",
-      image: vehicle2,
-      year: "2024",
-      mileage: "0 km",
-      fuel: "Essence",
-    },
-    {
-      id: "3",
-      name: "Ford F-150 Raptor",
-      price: "À partir de 75 000 €",
-      image: vehicle3,
-      year: "2024",
-      mileage: "0 km",
-      fuel: "Essence",
-    },
-    {
-      id: "4",
-      name: "Hyundai Ioniq 6",
-      price: "À partir de 55 000 €",
-      image: vehicle4,
-      year: "2024",
-      mileage: "0 km",
-      fuel: "Électrique",
-    },
-  ];
+  const { data: featuredVehicles, isLoading } = useFeaturedVehicles();
 
   return (
     <div className="min-h-screen">
@@ -102,9 +62,28 @@ const Index = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {featuredVehicles.map((vehicle) => (
-                <VehicleCard key={vehicle.id} {...vehicle} />
-              ))}
+              {isLoading ? (
+                <div className="col-span-4 text-center py-12">
+                  <p className="text-muted-foreground">Chargement des véhicules...</p>
+                </div>
+              ) : featuredVehicles && featuredVehicles.length > 0 ? (
+                featuredVehicles.map((vehicle) => (
+                  <VehicleCard 
+                    key={vehicle.id}
+                    id={vehicle.id}
+                    name={vehicle.name}
+                    price={`À partir de ${vehicle.price.toLocaleString()} ${vehicle.currency}`}
+                    image={vehicle.image_url}
+                    year={vehicle.year.toString()}
+                    mileage={`${vehicle.mileage.toLocaleString()} km`}
+                    fuel={vehicle.fuel_type}
+                  />
+                ))
+              ) : (
+                <div className="col-span-4 text-center py-12">
+                  <p className="text-muted-foreground">Aucun véhicule en vedette pour le moment.</p>
+                </div>
+              )}
             </div>
 
             <div className="text-center mt-8 md:hidden">

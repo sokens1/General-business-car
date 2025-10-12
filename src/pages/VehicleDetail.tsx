@@ -4,50 +4,44 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Calendar, Gauge, Fuel, ChevronLeft } from "lucide-react";
-import vehicle1 from "@/assets/vehicle-1.jpg";
-import vehicle2 from "@/assets/vehicle-2.jpg";
-import vehicle3 from "@/assets/vehicle-3.jpg";
-import vehicle4 from "@/assets/vehicle-4.jpg";
+import { useVehicle } from "@/hooks/useVehicles";
+import VehicleImageGallery from "@/components/VehicleImageGallery";
+import VehicleVideoGallery from "@/components/VehicleVideoGallery";
 
 const VehicleDetail = () => {
   const { id } = useParams();
+  const { data: vehicle, isLoading, error } = useVehicle(id || "");
 
-  // Mock data - would be fetched from API in production
-  const vehicleData: Record<string, any> = {
-    "1": {
-      name: "BMW X7 M50i",
-      price: "95 000 €",
-      image: vehicle1,
-      year: "2024",
-      mileage: "0 km",
-      fuel: "Essence",
-      transmission: "Automatique",
-      power: "530 ch",
-      description:
-        "Le BMW X7 M50i incarne le summum du luxe et de la performance. Ce SUV premium offre un espace généreux, des technologies de pointe et des performances exceptionnelles grâce à son moteur V8.",
-      features: [
-        "Toit panoramique",
-        "Sièges en cuir Nappa",
-        "Système audio Harman Kardon",
-        "Caméra 360°",
-        "Régulateur de vitesse adaptatif",
-        "Affichage tête haute",
-        "7 places",
-        "Pack M Sport",
-      ],
-      specs: {
-        "Moteur": "V8 4.4L Twin-Turbo",
-        "Puissance": "530 ch",
-        "Couple": "750 Nm",
-        "0-100 km/h": "4.7 secondes",
-        "Vitesse max": "250 km/h (bridée)",
-        "Consommation": "12.5 L/100km",
-        "Émissions CO2": "285 g/km",
-      },
-    },
-  };
+  if (isLoading) {
+    return (
+      <div className="min-h-screen">
+        <Navbar />
+        <main className="pt-24 pb-16">
+          <div className="container mx-auto px-4 text-center py-12">
+            <p className="text-muted-foreground">Chargement du véhicule...</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
-  const vehicle = vehicleData[id || "1"] || vehicleData["1"];
+  if (error || !vehicle) {
+    return (
+      <div className="min-h-screen">
+        <Navbar />
+        <main className="pt-24 pb-16">
+          <div className="container mx-auto px-4 text-center py-12">
+            <h1 className="text-2xl font-bold mb-4">Véhicule non trouvé</h1>
+            <Link to="/stock">
+              <Button className="btn-gold">Retour au stock</Button>
+            </Link>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -66,7 +60,7 @@ const VehicleDetail = () => {
             <div>
               <div className="aspect-[4/3] rounded-lg overflow-hidden mb-4 border border-border">
                 <img
-                  src={vehicle.image}
+                  src={vehicle.image_url}
                   alt={vehicle.name}
                   className="w-full h-full object-cover"
                 />
@@ -77,7 +71,9 @@ const VehicleDetail = () => {
             <div className="space-y-6">
               <div>
                 <h1 className="text-4xl font-bold mb-2">{vehicle.name}</h1>
-                <p className="text-3xl font-bold text-accent">{vehicle.price}</p>
+                <p className="text-3xl font-bold text-accent">
+                  {vehicle.price.toLocaleString()} {vehicle.currency}
+                </p>
               </div>
 
               {/* Quick Info */}
@@ -93,14 +89,14 @@ const VehicleDetail = () => {
                   <Gauge className="w-5 h-5 text-accent" />
                   <div>
                     <p className="text-xs text-muted-foreground">Kilométrage</p>
-                    <p className="font-semibold">{vehicle.mileage}</p>
+                    <p className="font-semibold">{vehicle.mileage.toLocaleString()} km</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3 bg-card p-4 rounded-lg border border-border">
                   <Fuel className="w-5 h-5 text-accent" />
                   <div>
                     <p className="text-xs text-muted-foreground">Carburant</p>
-                    <p className="font-semibold">{vehicle.fuel}</p>
+                    <p className="font-semibold">{vehicle.fuel_type}</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3 bg-card p-4 rounded-lg border border-border">
@@ -130,16 +126,27 @@ const VehicleDetail = () => {
                     DEMANDER UN DEVIS
                   </Button>
                 </Link>
-                <Link to="/financing" className="block">
-                  <Button variant="outline" className="w-full">
-                    SIMULER UN FINANCEMENT
-                  </Button>
-                </Link>
               </div>
             </div>
           </div>
 
           <Separator className="my-12" />
+
+          {/* Galerie d'images */}
+          {vehicle.vehicle_images && vehicle.vehicle_images.length > 0 && (
+            <VehicleImageGallery 
+              images={vehicle.vehicle_images} 
+              vehicleName={vehicle.name}
+            />
+          )}
+
+          {/* Galerie de vidéos */}
+          {vehicle.vehicle_videos && vehicle.vehicle_videos.length > 0 && (
+            <VehicleVideoGallery 
+              videos={vehicle.vehicle_videos} 
+              vehicleName={vehicle.name}
+            />
+          )}
 
           {/* Features & Specs */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
