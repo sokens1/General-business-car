@@ -149,8 +149,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-muted-foreground">contact@panafrique-motors.com</p>
-                      <p className="text-muted-foreground">info@panafrique-motors.com</p>
+                      <p className="text-muted-foreground">contact@prestige-car-luxe.com</p>
+                      <p className="text-muted-foreground">info@prestige-car-luxe.com</p>
                     </div>
                   </div>
 

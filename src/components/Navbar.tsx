@@ -27,20 +27,18 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+        isScrolled ? "bg-gray-50/95 backdrop-blur-md shadow-lg" : "bg-gray-50/90"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
-              <span className="text-2xl font-bold text-accent-foreground">P</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-foreground leading-none">PANAFRIQUE</span>
-              <span className="text-sm text-accent font-semibold leading-none">MOTORS</span>
-            </div>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/assets/logo-prestige.png" 
+              alt="PRESTIGE car luxe" 
+              className="h-24 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -60,17 +58,17 @@ const Navbar = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden"
+            className="lg:hidden mobile-menu-button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </Button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-background/98 backdrop-blur-md border-t border-border">
+        <div className="lg:hidden bg-gray-50/98 backdrop-blur-md border-t border-gray-300 shadow-lg">
           <div className="container mx-auto px-4 py-6 space-y-4">
             {navItems.map((item) => (
               <Link
@@ -78,8 +76,8 @@ const Navbar = () => {
                 to={item.path}
                 className={`block py-2 text-base font-medium transition-colors ${
                   location.pathname === item.path
-                    ? "text-accent"
-                    : "text-foreground/80 hover:text-foreground"
+                    ? "text-orange-600"
+                    : "text-gray-700 hover:text-black"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >

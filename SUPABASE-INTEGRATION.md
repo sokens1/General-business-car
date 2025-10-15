@@ -1,6 +1,6 @@
-# 📘 Guide d'Intégration Supabase - Panafrique Motors
+# 📘 Guide d'Intégration Supabase - PRESTIGE car luxe
 
-Ce guide vous accompagnera étape par étape pour intégrer Supabase à votre site Panafrique Motors et le rendre entièrement dynamique.
+Ce guide vous accompagnera étape par étape pour intégrer Supabase à votre site PRESTIGE car luxe et le rendre entièrement dynamique.
 
 ---
 
@@ -31,7 +31,7 @@ Supabase fournira la base de données PostgreSQL pour stocker :
 2. Connectez-vous ou créez un compte
 3. Cliquez sur **"New Project"**
 4. Remplissez les informations :
-   - **Name** : `panafrique-motors` (ou le nom de votre choix)
+   - **Name** : `prestige-car-luxe` (ou le nom de votre choix)
    - **Database Password** : Choisissez un mot de passe fort (sauvegardez-le !)
    - **Region** : Choisissez une région proche (ex: `Europe West (Ireland)`)
    - **Pricing Plan** : Sélectionnez **Free** pour commencer
@@ -333,5 +333,5 @@ Si vous rencontrez des problèmes :
 
 ---
 
-**🎉 Félicitations ! Votre site Panafrique Motors est maintenant dynamique et prêt à être utilisé !**
+**🎉 Félicitations ! Votre site PRESTIGE car luxe est maintenant dynamique et prêt à être utilisé !**
 

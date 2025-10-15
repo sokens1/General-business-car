@@ -1,4 +1,4 @@
-# 📋 Récapitulatif des Modifications - Panafrique Motors
+# 📋 Récapitulatif des Modifications - PRESTIGE car luxe
 
 ## ✅ Modifications Effectuées
 
@@ -24,8 +24,8 @@ Tous les libellés ont été mis à jour pour refléter la localisation au Gabon
 ### 2️⃣ **Nouveau Favicon Personnalisé**
 
 ✅ **Créé** : `public/favicon.svg`
-- Design personnalisé avec le logo "P" de Panafrique Motors
-- Couleurs : Or (#FFD700) sur fond noir (#0A0A0A)
+- Design personnalisé avec le logo "P" de PRESTIGE car luxe
+- Couleurs : Orange (#FF6600) sur fond noir (#0A0A0A)
 - Format SVG pour une qualité optimale sur tous les appareils
 
 ---

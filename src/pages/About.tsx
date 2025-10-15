@@ -49,7 +49,7 @@ const About = () => {
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p className="animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
                   Fondée avec la vision de révolutionner l'expérience d'achat automobile en Afrique,
-                  PANAFRIQUE MOTORS s'est rapidement imposée comme un leader dans la distribution
+                  PRESTIGE car luxe s'est rapidement imposée comme un leader dans la distribution
                   de véhicules premium.
                 </p>
                 <p className="animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
@@ -81,7 +81,7 @@ const About = () => {
               {values.map((value, index) => (
                 <div
                   key={index}
-                  className="bg-card p-6 rounded-lg border border-border hover:border-accent/50 transition-all duration-500 group hover:shadow-[0_0_40px_hsl(45,100%,55%,0.15)] animate-fade-in hover:-translate-y-2"
+                  className="bg-card p-6 rounded-lg border border-border hover:border-accent/50 transition-all duration-500 group hover:shadow-[0_0_40px_hsl(25,100%,50%,0.15)] animate-fade-in hover:-translate-y-2"
                   style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'both' }}
                 >
                   <div className="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">

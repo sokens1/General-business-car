@@ -1,6 +1,8 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="12" fill="#0A0A0A"/>
-  <circle cx="32" cy="32" r="28" fill="#FFD700"/>
-  <text x="32" y="46" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#0A0A0A" text-anchor="middle">P</text>
+  <text x="32" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">PRESTIGE</text>
+  <line x1="16" y1="25" x2="48" y2="25" stroke="#333" stroke-width="1"/>
+  <text x="32" y="35" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white" text-anchor="middle">car luxe</text>
+  <rect x="40" y="40" width="16" height="12" rx="2" fill="#FF6600" transform="rotate(15 48 46)"/>
+  <path d="M42 42 L46 42 L46 46 L50 46 L50 48 L46 48 L46 50 L42 50 Z" fill="#0A0A0A"/>
 </svg>
-

@@ -224,7 +224,7 @@ Vidéos (3)
 - ✅ Partage facile
 
 **Comment faire** :
-1. Créez une chaîne YouTube "Panafrique Motors"
+1. Créez une chaîne YouTube "PRESTIGE car luxe"
 2. Uploadez vos vidéos (publiques ou non répertoriées)
 3. Copiez l'URL : `https://www.youtube.com/watch?v=VIDEO_ID`
 4. Ajoutez dans Supabase avec `video_type = 'youtube'`

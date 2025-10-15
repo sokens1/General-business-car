@@ -1,4 +1,4 @@
-# 🚗 Panafrique Motors - Site Web
+# 🚗 PRESTIGE car luxe - Site Web
 
 ## 📍 Localisation
 
@@ -95,7 +95,7 @@ npm run dev
 ## 📊 Structure du Projet
 
 ```
-panafrique-drive-hub/
+prestige-car-luxe/
 ├── src/
 │   ├── components/       # Composants réutilisables
 │   │   ├── ui/          # Composants UI (shadcn)

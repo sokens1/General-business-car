@@ -1,5 +1,5 @@
 -- ========================================
--- SCHÉMA DE BASE DE DONNÉES PANAFRIQUE MOTORS
+-- SCHÉMA DE BASE DE DONNÉES PRESTIGE CAR LUXE
 -- À exécuter dans le SQL Editor de Supabase
 -- ========================================
 

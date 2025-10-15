@@ -2,7 +2,7 @@
 
 ## 🎯 Vue d'Ensemble
 
-Votre site Panafrique Motors est prêt ! Suivez ces 5 étapes simples pour le rendre dynamique avec Supabase.
+Votre site PRESTIGE car luxe est prêt ! Suivez ces 5 étapes simples pour le rendre dynamique avec Supabase.
 
 ---
 
@@ -14,7 +14,7 @@ Votre site Panafrique Motors est prêt ! Suivez ces 5 étapes simples pour le re
 2. Inscrivez-vous avec GitHub ou Email
 3. Cliquez sur **"New Project"**
 4. Remplissez :
-   - **Name** : `panafrique-motors`
+   - **Name** : `prestige-car-luxe`
    - **Password** : Choisissez un mot de passe fort 🔒
    - **Region** : `Europe West (Ireland)` ou le plus proche
    - **Plan** : Free (gratuit)
@@ -243,7 +243,7 @@ npm install
 
 ## 🎉 Félicitations !
 
-Votre site Panafrique Motors est maintenant :
+Votre site PRESTIGE car luxe est maintenant :
 - ✅ Localisé pour le Gabon
 - ✅ Dynamique avec Supabase
 - ✅ Prêt à être personnalisé

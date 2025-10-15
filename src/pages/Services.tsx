@@ -46,7 +46,7 @@ const Services = () => {
                   return (
                     <div
                       key={service.id}
-                      className="bg-card p-8 rounded-lg border border-border hover:border-accent/50 transition-all duration-500 hover:shadow-[0_0_40px_hsl(45,100%,55%,0.15)] group animate-fade-in hover:-translate-y-1"
+                      className="bg-card p-8 rounded-lg border border-border hover:border-accent/50 transition-all duration-500 hover:shadow-[0_0_40px_hsl(25,100%,50%,0.15)] group animate-fade-in hover:-translate-y-1"
                       style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'both' }}
                     >
                       <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">

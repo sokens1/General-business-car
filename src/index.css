@@ -8,48 +8,48 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Panafrica Motors - Premium Automotive Theme */
-    --background: 220 60% 8%;
+    /* PRESTIGE car luxe - Premium Automotive Theme */
+    --background: 0 0% 5%;
     --foreground: 0 0% 98%;
 
-    --card: 220 50% 12%;
+    --card: 0 0% 8%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 220 55% 10%;
+    --popover: 0 0% 6%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 220 60% 8%;
+    --primary: 0 0% 5%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 220 50% 15%;
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 220 40% 20%;
+    --muted: 0 0% 15%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 45 100% 55%;
-    --accent-foreground: 220 60% 8%;
+    --accent: 25 100% 50%;
+    --accent-foreground: 0 0% 5%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 40% 20%;
-    --input: 220 40% 20%;
-    --ring: 45 100% 55%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 25 100% 50%;
 
     --radius: 0.5rem;
 
-    /* Premium gold accent */
-    --gold: 45 100% 55%;
-    --gold-light: 45 100% 65%;
-    --gold-dark: 45 100% 45%;
+    /* Premium orange accent */
+    --orange: 25 100% 50%;
+    --orange-light: 25 100% 60%;
+    --orange-dark: 25 100% 40%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220, 60%, 8%), hsl(220, 50%, 5%));
-    --gradient-card: linear-gradient(180deg, hsl(220, 50%, 12%), hsl(220, 55%, 10%));
+    --gradient-hero: linear-gradient(135deg, hsl(0, 0%, 5%), hsl(0, 0%, 2%));
+    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 8%), hsl(0, 0%, 6%));
     
     /* Shadows */
-    --shadow-gold: 0 0 30px hsl(45 100% 55% / 0.3);
+    --shadow-orange: 0 0 30px hsl(25 100% 50% / 0.3);
     --shadow-elegant: 0 10px 40px hsl(0 0% 0% / 0.5);
 
     /* Animations */
@@ -74,7 +74,11 @@ All colors MUST be HSL.
 
 @layer components {
   .nav-link {
-    @apply relative text-sm font-medium text-foreground/80 transition-colors hover:text-foreground;
+    @apply relative text-sm font-medium text-gray-700 transition-colors hover:text-black;
+  }
+  
+  .mobile-menu-button {
+    @apply text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200;
   }
   
   .nav-link::after {
@@ -88,11 +92,11 @@ All colors MUST be HSL.
   }
 
   .btn-gold {
-    @apply bg-accent text-accent-foreground font-semibold px-6 py-3 rounded-md transition-all hover:shadow-[0_0_20px_hsl(45,100%,55%,0.4)] hover:scale-105;
+    @apply bg-accent text-accent-foreground font-semibold px-6 py-3 rounded-md transition-all hover:shadow-[0_0_20px_hsl(25,100%,50%,0.4)] hover:scale-105;
   }
 
   .vehicle-card {
-    @apply bg-card border border-border/50 rounded-lg overflow-hidden transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_30px_hsl(45,100%,55%,0.15)];
+    @apply bg-card border border-border/50 rounded-lg overflow-hidden transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_30px_hsl(25,100%,50%,0.15)];
   }
 
   .section-title {

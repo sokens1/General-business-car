@@ -14,7 +14,7 @@ interface VehicleCardProps {
 
 const VehicleCard = ({ id, name, price, image, year, mileage, fuel }: VehicleCardProps) => {
   return (
-    <Card className="vehicle-card group animate-fade-in hover:shadow-[0_10px_40px_hsl(45,100%,55%,0.2)] transition-all duration-500">
+    <Card className="vehicle-card group animate-fade-in hover:shadow-[0_10px_40px_hsl(25,100%,50%,0.2)] transition-all duration-500">
       <div className="relative overflow-hidden aspect-[4/3]">
         <img
           src={image}

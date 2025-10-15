@@ -28,7 +28,7 @@ const WhyChooseUs = () => {
     <section className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="section-title">Pourquoi Choisir PANAFRIQUE MOTORS</h2>
+          <h2 className="section-title">Pourquoi Choisir <span className="text-orange-600 uppercase font-bold">PRESTIGE car luxe</span></h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Nous nous engageons à vous offrir une expérience d'achat automobile exceptionnelle
           </p>
@@ -38,7 +38,7 @@ const WhyChooseUs = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-card p-6 rounded-lg border border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-[0_0_40px_hsl(45,100%,55%,0.15)] group animate-fade-in hover:-translate-y-2"
+              className="bg-card p-6 rounded-lg border border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-[0_0_40px_hsl(25,100%,50%,0.15)] group animate-fade-in hover:-translate-y-2"
               style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'both' }}
             >
               <div className="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
