@@ -1,5 +1,5 @@
 -- ========================================
--- SCHÉMA DE BASE DE DONNÉES PRESTIGE CAR LUXE
+-- SCHÉMA DE BASE DE DONNÉES GÉNÉRAL BUSINESS CAR
 -- À exécuter dans le SQL Editor de Supabase
 -- ========================================
 

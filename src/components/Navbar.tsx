@@ -35,8 +35,8 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src="/assets/logo-prestige.png" 
-              alt="PRESTIGE car luxe" 
+              src="/assets/general-business-car-logo-removebg-preview.png" 
+              alt="Général Business Car" 
               className="h-24 w-auto object-contain"
             />
           </Link>
@@ -76,7 +76,7 @@ const Navbar = () => {
                 to={item.path}
                 className={`block py-2 text-base font-medium transition-colors ${
                   location.pathname === item.path
-                    ? "text-orange-600"
+                    ? "text-red-600"
                     : "text-gray-700 hover:text-black"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}

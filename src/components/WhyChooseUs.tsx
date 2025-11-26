@@ -28,7 +28,7 @@ const WhyChooseUs = () => {
     <section className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="section-title">Pourquoi Choisir <span className="text-orange-600 uppercase font-bold">PRESTIGE car luxe</span></h2>
+          <h2 className="section-title">Pourquoi Choisir <span className="text-red-600 uppercase font-bold">Général Business Car</span></h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Nous nous engageons à vous offrir une expérience d'achat automobile exceptionnelle
           </p>

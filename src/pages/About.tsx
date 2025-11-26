@@ -49,7 +49,7 @@ const About = () => {
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p className="animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
                   Fondée avec la vision de révolutionner l'expérience d'achat automobile en Afrique,
-                  PRESTIGE car luxe s'est rapidement imposée comme un leader dans la distribution
+                  Général Business Car s'est rapidement imposée comme un leader dans la distribution
                   de véhicules premium.
                 </p>
                 <p className="animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>

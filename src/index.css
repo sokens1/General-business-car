@@ -8,49 +8,49 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* PRESTIGE car luxe - Premium Automotive Theme */
-    --background: 0 0% 5%;
-    --foreground: 0 0% 98%;
+    /* Général Business Car - Thème Rouge & Blanc */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 5%;
 
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 5%;
 
-    --primary: 0 0% 5%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 0 84% 47%; /* Rouge principal */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 35%;
 
-    --accent: 25 100% 50%;
-    --accent-foreground: 0 0% 5%;
+    --accent: 0 84% 47%; /* Utiliser l'accent comme rouge */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 25 100% 50%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 84% 47%;
 
     --radius: 0.5rem;
 
-    /* Premium orange accent */
-    --orange: 25 100% 50%;
-    --orange-light: 25 100% 60%;
-    --orange-dark: 25 100% 40%;
+    /* Rouge & blanc */
+    --orange: 0 84% 47%;
+    --orange-light: 0 84% 60%;
+    --orange-dark: 0 84% 40%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(0, 0%, 5%), hsl(0, 0%, 2%));
-    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 8%), hsl(0, 0%, 6%));
+    --gradient-hero: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 0%, 96%));
+    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 100%), hsl(0, 0%, 96%));
     
     /* Shadows */
-    --shadow-orange: 0 0 30px hsl(25 100% 50% / 0.3);
-    --shadow-elegant: 0 10px 40px hsl(0 0% 0% / 0.5);
+    --shadow-orange: 0 0 30px hsl(0 84% 47% / 0.3);
+    --shadow-elegant: 0 10px 40px hsl(0 0% 0% / 0.15);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

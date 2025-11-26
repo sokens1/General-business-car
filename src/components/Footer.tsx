@@ -10,8 +10,8 @@ const Footer = () => {
           <div>
             <div className="mb-4">
               <img 
-                src="/assets/logo-prestige.png" 
-                alt="PRESTIGE car luxe" 
+                src="/assets/general-business-car-logo-removebg-preview.png" 
+                alt="Général Business Car" 
                 className="h-28 w-auto object-contain"
               />
             </div>
@@ -25,17 +25,17 @@ const Footer = () => {
             <h3 className="font-bold text-black mb-4">Liens Rapides</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/stock" className="text-gray-600 hover:text-orange-600 transition-colors text-sm">
+                <Link to="/stock" className="text-gray-600 hover:text-red-600 transition-colors text-sm">
                   Notre Stock
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gray-600 hover:text-orange-600 transition-colors text-sm">
+                <Link to="/services" className="text-gray-600 hover:text-red-600 transition-colors text-sm">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-600 hover:text-orange-600 transition-colors text-sm">
+                <Link to="/about" className="text-gray-600 hover:text-red-600 transition-colors text-sm">
                   À Propos
                 </Link>
               </li>
@@ -57,15 +57,15 @@ const Footer = () => {
             <h3 className="font-bold text-black mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
-                <Phone className="w-4 h-4 text-orange-600 mt-1" />
+                <Phone className="w-4 h-4 text-red-600 mt-1" />
                 <span className="text-gray-600 text-sm">+241 XX XXX XXXX</span>
               </li>
               <li className="flex items-start space-x-3">
-                <Mail className="w-4 h-4 text-orange-600 mt-1" />
-                <span className="text-gray-600 text-sm">contact@prestige-car-luxe.com</span>
+                <Mail className="w-4 h-4 text-red-600 mt-1" />
+                <span className="text-gray-600 text-sm">contact@general-business-car.com</span>
               </li>
               <li className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 text-orange-600 mt-1" />
+                <MapPin className="w-4 h-4 text-red-600 mt-1" />
                 <span className="text-gray-600 text-sm">Libreville, Gabon</span>
               </li>
             </ul>
@@ -74,7 +74,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-200 mt-8 pt-8 text-center">
           <p className="text-gray-600 text-sm">
-            © {new Date().getFullYear()} PRESTIGE car luxe. Tous droits réservés.
+            © {new Date().getFullYear()} Général Business Car. Tous droits réservés.
           </p>
         </div>
       </div>
